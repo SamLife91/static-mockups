@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <title>Dashboard</title>
+</head>
+<body>
+  <div class="main">
+      <ul id="slide-out" class="col sidenav sidenav-fixed">
+          <li><a href="#!">First Sidebar Link</a></li>
+          <li><a href="#!">Second Sidebar Link</a></li>
+          <li class="no-padding">
+            <ul class="collapsible collapsible-accordion">
+              <li>
+                <a class="collapsible-header">Dropdown<i class="material-icons">arrow_drop_down</i></a>
+                <div class="collapsible-body">
+                  <ul>
+                    <li><a href="#!">First</a></li>
+                    <li><a href="#!">Second</a></li>
+                    <li><a href="#!">Third</a></li>
+                    <li><a href="#!">Fourth</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </li>
+      </ul>
+    <!-- <div class="col sidenav">
+        <ul id="slide-out" class="col sidenav">
+            <li><a href="#!">First Sidebar Link</a></li>
+            <li><a href="#!">Second Sidebar Link</a></li>
+            <li class="no-padding">
+              <ul class="collapsible collapsible-accordion">
+                <li>
+                  <a class="collapsible-header">Dropdown<i class="material-icons">arrow_drop_down</i></a>
+                  <div class="collapsible-body">
+                    <ul>
+                      <li><a href="#!">First</a></li>
+                      <li><a href="#!">Second</a></li>
+                      <li><a href="#!">Third</a></li>
+                      <li><a href="#!">Fourth</a></li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </li>
+        </ul>
+    </div> -->
+    <!-- <ul id="slide-out" class="sidenav sidenav-fixed">
+        <li><a href="#!">First Sidebar Link</a></li>
+        <li><a href="#!">Second Sidebar Link</a></li>
+      </ul> -->
+      <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <div class="col content">
+      <div class="head-bar">
+
+      </div>
+      <div class="content-wrapper"></div>
+    </div>
+  </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</html>
+
+<style>
+  .main {
+    width: 100vw;
+    height: 100vh;
+    background: #c3c3c3;
+    display: flex;
+    flex-direction: row;
+  }
+  .col.sidenav {
+    background: red;
+    flex: 1;
+  }
+  .col.content {
+    background: green;
+    width: calc(100% - 300px);
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    
+  }
+  .head-bar {
+    height: 90px;
+    background: white;
+  }
+  .sidenav {
+    background: yellow;
+    /* position: relative; */
+    width: 200px;
+    z-index: 33;
+  }
+</style>
+
+<script>
+   document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems, options);
+  });
+</script>
