@@ -1,46 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
     <title>PayQ Login</title>
   </head>
 
   <body>
     <div class="page-wrapper">
-      <form action="" class="form swing-in-top-bck">
+      <form class="form swing-in-top-bck" id="formLogin" method="get" action="">
         <div class="row">
           <div class="profile">
-            <img class="profile-img" src="https://www.aber.ac.uk/staff-profile-assets/img/noimg.png" alt="">
+            <img
+              class="profile-img"
+              src="https://www.aber.ac.uk/staff-profile-assets/img/noimg.png"
+              alt=""
+            />
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="mail" type="text" class="validate">
-            <label for="mail">mail</label>
+            <input
+              id="cemail"
+              type="email"
+              name="cemail"
+              data-error=".errorEmail"
+            />
+            <div class="errorEmail"></div>
+            <label for="email">email</label>
           </div>
         </div>
 
         <div class="row">
           <div class="input-field col s12">
-            <input id="password" type="password" class="validate">
+            <input
+              id="password"
+              type="password"
+              name="password"
+              data-error=".errorPassword"
+            />
+            <div class="errorPassword"></div>
             <label for="password">password</label>
           </div>
         </div>
 
         <div class="row">
-          <a class="waves-effect waves-light btn">button</a>
+          <button
+            type="submit"
+            class="btn waves-effect waves-light btn"
+            name="action"
+          >
+            Submit
+          </button>
         </div>
       </form>
     </div>
   </body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
+  <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"
+    integrity="sha256-sPB0F50YUDK0otDnsfNHawYmA5M0pjjUf4TvRJkGFrI="
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.min.js"
+    integrity="sha256-vb+6VObiUIaoRuSusdLRWtXs/ewuz62LgVXg2f1ZXGo="
+    crossorigin="anonymous"
+  ></script>
 </html>
 
 <style>
@@ -72,7 +112,8 @@
     align-self: center;
     flex-direction: column;
     border-radius: 4px;
-    box-shadow: 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);;
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.12),
+      0 3px 1px -2px rgba(0, 0, 0, 0.2);
   }
   .form .row {
     width: 360px;
@@ -95,6 +136,16 @@
     height: auto;
     box-shadow: inset 0 0 5px 0px #000, 0px 0px 2px #c3c3c3;
   }
+  .input-field div.error {
+    position: relative;
+    left: 0rem;
+    font-size: 0.8rem;
+    color: #ff4081;
+    -webkit-transform: translateY(0%);
+    -ms-transform: translateY(0%);
+    -o-transform: translateY(0%);
+    transform: translateY(0%);
+  }
   @media (max-width: 1024px) {
     .form .row {
       width: 640px;
@@ -106,23 +157,47 @@
     }
   }
   .swing-in-top-bck {
-	        animation: swing-in-top-bck 2.6s cubic-bezier(0.175, 0.885, 0.320, 1.275) 1s backwards;
-}
+    animation: swing-in-top-bck 2.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1s
+      backwards;
+  }
 
-@keyframes swing-in-top-bck {
-  0% {
-    -webkit-transform: rotateX(70deg);
-            transform: rotateX(70deg);
-    -webkit-transform-origin: top;
-            transform-origin: top;
-    opacity: 0;
+  @keyframes swing-in-top-bck {
+    0% {
+      -webkit-transform: rotateX(70deg);
+      transform: rotateX(70deg);
+      -webkit-transform-origin: top;
+      transform-origin: top;
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: rotateX(0deg);
+      transform: rotateX(0deg);
+      -webkit-transform-origin: top;
+      transform-origin: top;
+      opacity: 1;
+    }
   }
-  100% {
-    -webkit-transform: rotateX(0deg);
-            transform: rotateX(0deg);
-    -webkit-transform-origin: top;
-            transform-origin: top;
-    opacity: 1;
-  }
-}
 </style>
+<script>
+  $('#formLogin').validate({
+    rules: {
+      cemail: {
+        required: true,
+        email: true
+      },
+      password: {
+        required: true,
+        minlength: 5
+      }
+    },
+    errorElement: 'div',
+    errorPlacement: function(error, element) {
+      var placement = $(element).data('error')
+      if (placement) {
+        $(placement).append(error)
+      } else {
+        error.insertAfter(element)
+      }
+    }
+  })
+</script>
